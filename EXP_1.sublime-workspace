@@ -1,0 +1,776 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ar",
+				"article"
+			],
+			[
+				"art",
+				"articles"
+			],
+			[
+				"end",
+				"endif"
+			],
+			[
+				"last",
+				"lastUsername"
+			],
+			[
+				"us",
+				"$user〔variable〕"
+			],
+			[
+				"User",
+				"UserBundle"
+			],
+			[
+				"histor",
+				"$history〔variable〕"
+			],
+			[
+				"var",
+				"var_dump〔function〕"
+			],
+			[
+				"getM",
+				"getManager"
+			],
+			[
+				"form",
+				"formBuilder"
+			],
+			[
+				"isn",
+				"is_null"
+			],
+			[
+				"Presizely",
+				"PresizelyUserBundle"
+			],
+			[
+				"Measurement",
+				"measurement"
+			],
+			[
+				"lis",
+				"listAdverts"
+			],
+			[
+				"hello",
+				"hello_the_world"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"bord",
+				"border"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"expa",
+				"expanderMore  (variable)"
+			],
+			[
+				"padding",
+				"padding-left:   (property)"
+			],
+			[
+				"pa",
+				"padding-bottom"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"trans",
+				"transition"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"ba",
+				"background-color:   (property)"
+			],
+			[
+				"bor",
+				"border-bottom:   (property)"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"on",
+				"onContent"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"s",
+				"s"
+			],
+			[
+				"off",
+				"offset  (function)"
+			],
+			[
+				"en",
+				"endShapeY"
+			],
+			[
+				"be",
+				"beginShapeY"
+			],
+			[
+				"beginShape",
+				"beginShapeX"
+			],
+			[
+				"remove",
+				"removeClass  (function)"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"bot",
+				"bottom"
+			],
+			[
+				"add",
+				"addClass  (function)"
+			],
+			[
+				"repea",
+				"no-repeat"
+			],
+			[
+				"prin",
+				"print_r  (function)"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"p",
+				"position"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"repeat",
+				"repeat-y"
+			],
+			[
+				"fon",
+				"font-weight"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 380.0,
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"rt",
+				"SublimeHighlight: copy to clipboard as RTF"
+			],
+			[
+				"r",
+				"SublimeHighlight: copy to clipboard as RTF"
+			],
+			[
+				"rtf",
+				"SublimeHighlight: copy to clipboard as RTF"
+			],
+			[
+				"ft",
+				"Preferences: Package Control Settings – Default"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 463.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/wamp/www/Presizely/Symfony/app/config/parameters.yml",
+		"/C/wamp/www/CRUD_test/crud-admin-generator/src/app.php",
+		"/C/wamp/www/CRUD_test/crud-admin-generator/web/index.php",
+		"/C/wamp/www/CRUD_test/crud-admin-generator/web/.htaccess",
+		"/C/wamp/www/Presizely/Symfony/app/config/config.yml",
+		"/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-01/01.01-basic-scene.html",
+		"/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-01/01.02-simple-mesh.html",
+		"/C/wamp/www/puzzle Tommy Nicolas.zip",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Controller/UserController.php",
+		"/C/wamp/www/Presizely/Symfony/app/Resources/views/layout.html.twig",
+		"/C/wamp/www/Presizely/Symfony/app/config/security.yml",
+		"/C/wamp/www/Presizely/Symfony/app/config/routing.yml",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/APIBundle/Resources/views/Default/index.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/APIBundle/Resources/config/routing.yml",
+		"/C/wamp/www/Presizely/Symfony/app/AppKernel.php",
+		"/C/wamp/www/Presizely/Symfony/composer.json",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Entity/User.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/Controller/ProductsController.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/Entity/Article.php",
+		"/C/Users/Tommy/Documents/Cours/Master 1 Ingemedia/Presizely/Dev/parameters.yml",
+		"/C/Users/Tommy/Documents/Cours/Master 1 Ingemedia/Presizely/Dev/Site/PMA/config.inc.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Entity/History.php",
+		"/C/Users/Tommy/Documents/Cours/Master 1 Ingemedia/Presizely/Dev/~parameters.yml.dist",
+		"/C/Users/Tommy/Documents/Cours/Master 1 Ingemedia/Presizely/Dev/config.yml",
+		"/C/Users/Tommy/Downloads/api.html",
+		"/C/Users/Tommy/Downloads/popup.html",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/User/testIndex.html.twig",
+		"/C/wamp/www/Presizely/Symfony/app/.htaccess",
+		"/C/wamp/www/Presizely/Symfony/web/.htaccess",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/Form/fields.html.twig",
+		"/C/wamp/www/Presizely/Symfony/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form/form_div_layout.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/Form/form_div_layout.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Entity/Measurement.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/User/testMeasurement.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/config/routing.yml",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/User/dashboardtestIndex.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/User/Histo.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/User/register.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/layout.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/Resources/views/Products/partener-to-article.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/Entity/Partener.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/Resources/config/routing.yml",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/DataFixtures/ORM/LoadUser.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/Resources/views/Products/viewAllArticles.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/Resources/views/Products/addPartener.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/DependencyInjection/PresizelyProductsExtension.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/Resources/config/services.xml",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/ProductsBundle/DependencyInjection/Configuration.php",
+		"/C/wamp/www/Presizely/Symfony/vendor/friendsofsymfony/user-bundle/Controller/RegistrationController.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/register.html.twig",
+		"/C/wamp/www/Presizely/Symfony/vendor/friendsofsymfony/user-bundle/Resources/views/Registration/register.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Repository/UserRepository.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/views/Registration/register.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Resources/Registration/register.html.twig",
+		"/C/wamp/www/Presizely/Symfony/vendor/friendsofsymfony/user-bundle/Resources/views/Registration/register_content.html.twig",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/DataFixtures/ORM/LoadHistories.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Entity/Articles.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Entity/Article.php",
+		"/C/wamp/www/Presizely/Symfony/app/config/routing_dev.yml",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/DataFixtures/ORM/LoadArticles.php",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/DataFixtures/ORM/LoadArticles",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/Entity/Articles",
+		"/C/wamp/www/Presizely/Symfony/src/Presizely/UserBundle/PresizelyUserBundle.php",
+		"/C/wamp/www/Presizely/Symfony/Symfony/web/config.php",
+		"/C/wamp/www/Presizely/Symfony/.htaccess",
+		"/C/wamp/www/Presizely/Symfony/.htpasswd",
+		"/C/wamp/www/Presizely/Symfony/php.ini",
+		"/C/wamp/www/Presizely/Symfony/phpinfo.php",
+		"/C/wamp/www/Presizely/Symfony/PMA/config.inc.php",
+		"/C/wamp/www/Presizely/Symfony/Symfony/web/.htaccess",
+		"/C/wamp/www/Presizely/Symfony/sftp-config.json",
+		"/C/wamp/www/Presizely/Symfony/index.html",
+		"/C/Users/Tommy/Documents/Cours/Master 1 Ingemedia/Presizely/Dev/Site/plop",
+		"/C/Users/Tommy/Documents/Cours/Master 1 Ingemedia/Presizely/Dev/Site/PMA/phpMyAdmin-4.3.2-all-languages/config.inc.php",
+		"/C/Users/Tommy/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Tommy/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Tommy/Documents/Cours/Master 1 Ingemedia/Presizely/Dev/Site/sftp-config.json",
+		"/C/Users/Tommy/Desktop/shit.html",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Controller/AdvertController.php",
+		"/C/wamp/www/Symfony/app/config/config.yml",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Entity/Advert.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Form/AdvertType.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Entity/AdvertRepository.php",
+		"/C/wamp/www/Symfony/app/Resources/views/layout.html.twig",
+		"/C/wamp/www/Symfony/src/OC/UserBundle/Resources/views/Security/login.html.twig",
+		"/C/wamp/www/Symfony/src/OC/UserBundle/Controller/SecurityController.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Entity/AdvertSkill.php",
+		"/C/wamp/www/Symfony/src/OC/UserBundle/DataFixtures/ORM/LoadUser.php",
+		"/C/wamp/www/Symfony/app/AppKernel.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/config/services.yml",
+		"/C/wamp/www/Symfony/app/config/routing.yml",
+		"/C/wamp/www/Symfony/app/config/security.yml",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/config/routing.yml",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Validator/Antiflood.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Validator/AntifloodValidator.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Form/ImageType.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Entity/Image.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Form/AdvertEditType.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/delete.html.twig",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/form.html.twig",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Form/CategoryType.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/index.html.twig",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Entity/Category.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Entity/Application.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/DoctrineListener/ApplicationNotification.php",
+		"/C/wamp/www/Symfony/composer.json",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Entity/SkillRepository.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/view.html.twig",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/DataFictures/ORM/LoadSkill.php",
+		"/C/Users/Tommy/Documents/Portfolio/Theme Wordpress/Portfolio/sidebar.php",
+		"/C/Users/Tommy/Documents/Portfolio/Theme Wordpress/Portfolio/index.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Entity/Skill.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/DataFictures/ORM/LoadCategory.php",
+		"/C/wamp/www/Symfony/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/composer.json",
+		"/C/wamp/www/Symfony/app/config/parameters.yml",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Antispam/OCAntispam.php",
+		"/C/wamp/www/test/composer.json",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/edit.html.twig",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/layout.html.twig",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/add.html.twig",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/menu.html.twig",
+		"/C/wamp/www/Symfony/app/layout.html.twig",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/layout.html.twig",
+		"/C/wamp/www/Symfony/app/config/routing_dev.yml",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Controller/DefaultController.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/OCPlateformBundle.php",
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Default/index.html.twig",
+		"/C/wamp/bin/apache/apache2.4.9/bin/php.ini"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Opération street marketing, la parole vous est donnée : rendez vous chez ZARA le mercredi 7 mars, dès 9h ! Cliquez et découvrez",
+			"Nos",
+			"                              <img class=\"gbl-icon svg center-block\" src=\"img/svg/check.svg\"  width=\"28\" height=\"28\">\n",
+			"col-md-7\">\n                              <span class=\"slider-title\">Taille</span>\n                              <input type=\"text\" value=\"\" data-slider-min=\"0\" data-slider-max=\"100\" data-slider-step=\"1\" data-slider-value=\"50\" class=\"filter_size s1\">\n                            </div>\n                            <div class=\"col-xs-4 col-md-3 size-text\">\n                              <span class=\"size_current s1\"></span>\n                            </div>\n                            <div class=\"col-xs-2 col-md-2 svg-icon\">\n                              <img class=\"gbl-icon svg center",
+			"article",
+			"form",
+			"Benja",
+			"web/web/",
+			"\"img/",
+			"scripts",
+			"!=",
+			"is",
+			"endif",
+			"!=",
+			"Product",
+			"this",
+			"layout",
+			"user.measurement",
+			"Articles",
+			"taille",
+			"nullable=false",
+			"* @ORM\\JoinColumn(nullable=false)",
+			"   * @ORM\\JoinColumn(nullable=false)\n",
+			"nullable=true",
+			"\\int",
+			"int",
+			"PlateformBundle",
+			"OC",
+			"slow",
+			"SecurityController.php",
+			"Platform",
+			"PlatformBundle",
+			"platformbundle",
+			"PlatformBundle",
+			"OCPlatformBundle",
+			"Platforme",
+			"OCPlatform",
+			"PlatformBundle",
+			"\nuse OC\\PlateformBundle\\Entity\\Skill;",
+			"Image",
+			"PlatformBundle",
+			"Platform",
+			"AntispamService",
+			"getOcPlatform_AntispamService",
+			"getOCPlatform_AntispamService",
+			"getOcPlatform_AntispamService",
+			"PlatformBundle",
+			"getTemplatingService",
+			"getTemplatingService ",
+			"Platform",
+			"Pas (encore !) d'annonces",
+			"Platform",
+			"platform",
+			"PlatformBundle",
+			"OCPlatformBundle",
+			"\n\noc_plateform_add:\n    path:      /add\n    defaults:  { _controller: OCPlateformBundle:Advert:add }",
+			"[PHP]\nmax_nesting_level",
+			"xdebug",
+			"xdebug.max_nesting_level",
+			"<a",
+			"danse",
+			" ;",
+			"danse",
+			"plop",
+			"expander",
+			".slick-next",
+			"push_appli_RA_slider",
+			"linksToModules",
+			"data",
+			"){\n",
+			".wave.right",
+			"rezize",
+			"trigg",
+			"alert",
+			"340",
+			"330",
+			"random",
+			"oldPos",
+			"filename",
+			"tabMax",
+			"animationMouseMenu",
+			"hideMenu",
+			"a{",
+			"border",
+			"40",
+			"posDep",
+			"3000",
+			"hide",
+			"offset",
+			"not",
+			"border-right",
+			"nav .subMenu2 ul",
+			"border-right",
+			"border-left",
+			"nav div:not(.separationTitleMenu)",
+			"separation",
+			"on{",
+			"border-rad",
+			"border",
+			".flex-direction-nav a",
+			".flexslider",
+			"bg_play_pause.png",
+			".flexslider",
+			".flex-control-nav",
+			"flex-control-nav flex-control-paging",
+			"p",
+			"excerpt",
+			"a",
+			"a{",
+			"cat1",
+			"$out",
+			"echo",
+			"regex1",
+			"ch",
+			"wikipediaURL",
+			"verb",
+			"ulHeightMiddlesubMenu",
+			"ulHeightMiddle",
+			"menu, ol, ul",
+			"</ul>",
+			"<ul",
+			"</ul>",
+			"ul",
+			"div",
+			"prout",
+			"<img src=\"img/separationTitleMenu.jpg\" class =\"separationTitleMenu\" alt=\"Separation liste\" height=\"1\" width=\"12\">",
+			"1D2B6E",
+			"<img src=\"img/separationTitleMenu.jpg\" class =\"separationTitleMenu\" alt=\"Separation liste\" height=\"1\" width=\"12\">"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"incomplete_sync": null,
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+								"php": "C:/wamp/bin/php/php5.3.10/php.exe"
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"index2.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 143.0,
+	"status_bar_visible": true
+}
