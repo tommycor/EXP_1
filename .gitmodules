@@ -1,3 +1,0 @@
-[submodule "libs/three.js"]
-	path = libs/threejs
-	url = http://threejs.org/build/three.min.js
