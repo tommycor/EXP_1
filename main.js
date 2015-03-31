@@ -4,6 +4,7 @@ var renderer;
 var scene;
 var camera;
 var spotLight;
+var planeY = -50;
 
 
 function init() {
@@ -37,13 +38,13 @@ function init() {
     ambientLight.name = "ambientLight";
 
     ////PLANE
-    var planeGeometry = new THREE.PlaneGeometry(80, 100, 15, 15);
-    var planeMaterial = new THREE.MeshLambertMaterial({color: 0x4444444});
+    var planeGeometry = new THREE.PlaneGeometry(80, 180, 15, 15);
+    var planeMaterial = new THREE.MeshLambertMaterial({color: 0x333333});
     var plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.receiveShadow = true;
     plane.rotation.x = -0.5 * Math.PI;
     plane.position.x = 0;
-    plane.position.y = -50;
+    plane.position.y = planeY;
     plane.position.z = 0;
 
     ////CUBES
@@ -53,7 +54,7 @@ function init() {
         color: 'white'
     });
     var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-    cube.position.z = 6;
+    cube.position.y = 5
     cube.castShadow = true;
     cube.transparent = true;
 
@@ -78,6 +79,18 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
     render();
+
+    var rotation = { x : 0, z: 0 };
+    var maxRotation = { x : Math.PI/2, y: Math.PI/2 };
+
+    window.addEventListener('click', function(){
+        var tween = new TWEEN.Tween(rotation).to(maxRotation, 5000);
+        tween.onUpdate(function(){
+            cube.rotation.x = rotation.x;
+            cube.rotation.y = rotation.z;
+            console.log('click!')
+        });
+    })
 }
 
 
