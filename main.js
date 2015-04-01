@@ -54,13 +54,13 @@ function init() {
         color: 'white'
     });
     var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-    cube.position.y = 5
+    cube.position.y = 5;
     cube.castShadow = true;
     cube.transparent = true;
 
 
     ////EXTRA
-    control = new function() {
+    control = new function(){
         this.camX = 0;
         this.camY = 30;
         this.camZ = 0;
@@ -81,16 +81,23 @@ function init() {
     render();
 
     var rotation = { x : 0, z: 0 };
-    var maxRotation = { x : Math.PI/2, y: Math.PI/2 };
+//    var maxRotation = { x : Math.PI/2, z: Math.PI/2 };
+    var maxRotation = { x : 1, z: 1 };
+
+    var tween = new TWEEN.Tween(rotation)
+        .to(maxRotation, 5000)
+        .easing(TWEEN.Easing.Elastic.InOut)
+        .onUpdate(function(){
+            console.log('updating!');
+            cube.rotation.x = rotation.x;
+            cube.rotation.z = rotation.z;
+        })
+        .start();
 
     window.addEventListener('click', function(){
-        var tween = new TWEEN.Tween(rotation).to(maxRotation, 5000);
-        tween.onUpdate(function(){
-            cube.rotation.x = rotation.x;
-            cube.rotation.y = rotation.z;
-            console.log('click!')
-        });
-    })
+        console.log('click!');
+        tween.start();
+    });
 }
 
 
@@ -101,7 +108,7 @@ function render() {
     spotLight.position.y = control.spotY;
     camera.lookAt(scene.position);
 
-
+    TWEEN.update();
     stats.update();
 
     requestAnimationFrame(render);
