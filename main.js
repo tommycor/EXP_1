@@ -7,6 +7,10 @@ var spotLight;
 var planeY = -50;
 
 
+var test = false;
+var cube;
+
+
 function init() {
 
     //// INIT
@@ -53,7 +57,7 @@ function init() {
         wireframe: true,
         color: 'white'
     });
-    var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
     cube.position.y = 5;
     cube.castShadow = true;
     cube.transparent = true;
@@ -81,22 +85,23 @@ function init() {
     render();
 
     var rotation = { x : 0, z: 0 };
-//    var maxRotation = { x : Math.PI/2, z: Math.PI/2 };
-    var maxRotation = { x : 1, z: 1 };
-
-    var tween = new TWEEN.Tween(rotation)
-        .to(maxRotation, 5000)
-        .easing(TWEEN.Easing.Elastic.InOut)
+    var maxRotation = { x : Math.PI/2, z: Math.PI/2 };
+    var previous = { x : 0, z: 0 };
+    var tween = new TWEEN.Tween({x : 0, z: 0, previous : previous})
+        .to({x : Math.PI/2, z: Math.PI/2}, 3000)
         .onUpdate(function(){
-            console.log('updating!');
-            cube.rotation.x = rotation.x;
-            cube.rotation.z = rotation.z;
+            cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
+            cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
+            this.previous.x = this.x;
+            this.previous.z = this.z;
+
         })
-        .start();
+        //.easing(TWEEN.Easing.Elastic.InOut)
+    
+
 
     window.addEventListener('click', function(){
-        console.log('click!');
-        tween.start();
+        //tween.start();
     });
 }
 
@@ -141,6 +146,25 @@ function handleResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
+
+
+var projector = new THREE.Projector();
+window.addEventListener('click', function(event){
+    event.preventDefault();
+    console.log('clicking!')
+
+    var vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
+    projector.unprojectVector(vector,camera);
+
+    var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
+    var intersects = raycaster.intersectObjects( collidableMeshList );
+
+    if ( intersects.length > 0 ) {
+        intersects[ 0 ].object.material.transparent=true;
+        intersects[ 0 ].object.material.color=new THREE.Color(0x0000ff);
+    }
+});
+
 
 
 window.onload = init;
