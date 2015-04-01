@@ -42,7 +42,7 @@ function init() {
     ambientLight.name = "ambientLight";
 
     ////PLANE
-    var planeGeometry = new THREE.PlaneGeometry(80, 180, 15, 15);
+    var planeGeometry = new THREE.PlaneBufferGeometry(80, 180, 15, 15);
     var planeMaterial = new THREE.MeshLambertMaterial({color: 0x333333});
     var plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.receiveShadow = true;
@@ -88,7 +88,7 @@ function init() {
     var maxRotation = { x : Math.PI/2, z: Math.PI/2 };
     var previous = { x : 0, z: 0 };
     var tween = new TWEEN.Tween({x : 0, z: 0, previous : previous})
-        .to({x : Math.PI/2, z: Math.PI/2}, 3000)
+        .to({x : Math.PI/10, z: Math.PI/10}, 3000)
         .onUpdate(function(){
             cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
             cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
@@ -101,7 +101,7 @@ function init() {
 
 
     window.addEventListener('click', function(){
-        //tween.start();
+        tween.start();
     });
 }
 
@@ -151,17 +151,15 @@ function handleResize() {
 var projector = new THREE.Projector();
 window.addEventListener('click', function(event){
     event.preventDefault();
-    console.log('clicking!')
 
     var vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
     projector.unprojectVector(vector,camera);
 
     var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
-    var intersects = raycaster.intersectObjects( collidableMeshList );
+    var intersects = raycaster.intersectObjects( scene.children );
 
     if ( intersects.length > 0 ) {
-        intersects[ 0 ].object.material.transparent=true;
-        intersects[ 0 ].object.material.color=new THREE.Color(0x0000ff);
+        console.log(intersects[ 0 ].point);
     }
 });
 
