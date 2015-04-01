@@ -51,6 +51,20 @@ function init() {
     plane.position.y = planeY;
     plane.position.z = 0;
 
+    ////PLANE
+    var locateGeometry = new THREE.PlaneBufferGeometry(80, 180);
+    var locateMaterial = new THREE.MeshLambertMaterial({
+        color: 0xFF0000,
+        transparent : true
+        //opacity: 0
+    });
+    var locate = new THREE.Mesh(planeGeometry, locateMaterial);
+    locate.name = "locate";
+    locate.rotation.x = -0.5 * Math.PI;
+    locate.position.x = 0;
+    locate.position.y = 0;
+    locate.position.z = 0;
+
     ////CUBES
     var cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
     var cubeMaterial = new THREE.MeshLambertMaterial({
@@ -75,6 +89,7 @@ function init() {
 
     ////ADDING
     scene.add(plane);
+    scene.add(locate);
     scene.add(spotLight);
     scene.add(ambientLight);
     scene.add(cube);
@@ -99,10 +114,27 @@ function init() {
         //.easing(TWEEN.Easing.Elastic.InOut)
     
 
+    window.addEventListener('click', function(event){
+        event.preventDefault();
 
+        var vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
+        projector.unprojectVector(vector,camera);
+
+        var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
+        var intersect = raycaster.intersectObject( locate );
+
+        console.log(intersect[0].point);
+
+    });
     window.addEventListener('click', function(){
         tween.start();
     });
+
+
+    var projector = new THREE.Projector();
+    function posMouse(event){
+
+    }
 }
 
 
@@ -148,20 +180,7 @@ function handleResize() {
 }
 
 
-var projector = new THREE.Projector();
-window.addEventListener('click', function(event){
-    event.preventDefault();
 
-    var vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
-    projector.unprojectVector(vector,camera);
-
-    var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
-    var intersects = raycaster.intersectObjects( scene.children );
-
-    if ( intersects.length > 0 ) {
-        console.log(intersects[ 0 ].point);
-    }
-});
 
 
 
