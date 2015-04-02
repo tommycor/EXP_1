@@ -9,6 +9,7 @@ var minV = 10000;
 var maxV = 2500;
 var deltaV = minV - maxV;
 var cube;
+var sizePlane = 180;
 
 
 function init() {
@@ -42,7 +43,7 @@ function init() {
     ambientLight.name = "ambientLight";
 
     ////PLANE
-    var planeGeometry = new THREE.PlaneBufferGeometry(80, 180, 15, 15);
+    var planeGeometry = new THREE.PlaneBufferGeometry(sizePlane, sizePlane, 15, 15);
     var planeMaterial = new THREE.MeshLambertMaterial({color: 0x333333});
     var plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.receiveShadow = true;
@@ -52,7 +53,7 @@ function init() {
     plane.position.z = 0;
 
     ////PLANE
-    var locateGeometry = new THREE.PlaneBufferGeometry(80, 180);
+    var locateGeometry = new THREE.PlaneBufferGeometry(sizePlane, sizePlane);
     var locateMaterial = new THREE.MeshLambertMaterial({
         color: 0xFF0000,
         transparent : true,
@@ -123,8 +124,16 @@ function init() {
         var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
         var intersect = raycaster.intersectObject( locate );
 
-        console.log("X: "+intersect[0].point.x);
-        console.log("Z: "+intersect[0].point.z);
+        mouseX = intersect[0].point.x;
+        mouseZ = intersect[0].point.z;
+
+        //Distance = racine((Xa - Xb)² + (Ya - Yb)²)
+        var dist = Math.sqrt((cube.position.x - mouseX)*(cube.position.x - mouseX) + (cube.position.z - mouseZ)*(cube.position.z - mouseZ));
+        var timeRotate = deltaV * (4/sizePlane) * dist + maxV;
+
+        console.log(timeRotate);
+
+
 
     });
     window.addEventListener('click', function(){
@@ -132,7 +141,6 @@ function init() {
     });
 
 
-    var projector = new THREE.Projector();
     function posMouse(event){
 
     }
@@ -158,7 +166,7 @@ function render() {
 function addControlStat(controlObject) {
     var gui = new dat.GUI();
     gui.add(controlObject, 'camX', -50, 50);
-    gui.add(controlObject, 'camY', -50, 50);
+    gui.add(controlObject, 'camY', 0, 150);
     gui.add(controlObject, 'camZ', -50, 50);
     gui.add(controlObject, 'spotY', 0, 50);
 
