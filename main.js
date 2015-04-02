@@ -13,6 +13,8 @@ var minR = Math.PI/10;
 var deltaR = maxR - minR;
 var cube;
 var sizePlane = 180;
+var rotX;
+var rotZ;
 
 
 function init() {
@@ -72,8 +74,9 @@ function init() {
     ////CUBES
     var cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
     var cubeMaterial = new THREE.MeshLambertMaterial({
-        wireframe: true,
-        color: 'white'
+        //wireframe: true,
+        //color: 'white'
+        color: 0x00CC00
     });
     cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
@@ -102,17 +105,7 @@ function init() {
 
     render();
 
-    var previous = { x : 0, z: 0 };
-    var tween = new TWEEN.Tween({x : 0, z: 0, previous : previous})
-        .to({x : Math.PI/4, y: Math.PI/4, z: Math.PI/4}, 1000)
-        .onUpdate(function(){
-            cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
-            cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
-            this.previous.x = this.x;
-            this.previous.z = this.z;
-
-        })
-        .easing(TWEEN.Easing.Circular.In)
+    
     
 
     window.addEventListener('mousemove', function(event){
@@ -135,18 +128,31 @@ function init() {
         var dist = Math.sqrt(distX*distX + distZ*distZ);
 
         var timeRotate = deltaV * (4/sizePlane) * dist + maxV;
-        var rotY = -distX * (deltaR/(sizePlane/2)) + maxR;
 
-        if (distX >= 0) rotY = -distX * (deltaR/(sizePlane/2)) + maxR;
-        else            rotY = -(distX * (deltaR/(sizePlane/2)) + maxR);
+        if (distX >= 0) rotZ = -distX * (deltaR/(sizePlane/2)) + maxR;
+        else            rotZ = -(distX * (deltaR/(sizePlane/2)) + maxR);
+        if (distZ <= 0) rotX = -distZ * (deltaR/(sizePlane/2)) + maxR;
+        else            rotX = -(distZ * (deltaR/(sizePlane/2)) + maxR);
 
-        console.log("rotY : "+rotY);
+        console.log("rotZ : "+rotZ);
+        console.log("rotX : "+rotX);
 
 
 
     });
     window.addEventListener('click', function(){
-        tween.start();
+        var previous = { x : 0, z: 0 };
+        var tween = new TWEEN.Tween({x : 0, z: 0, previous : previous})
+            .to({x : rotX, z: rotZ}, 1000)
+            .onUpdate(function(){
+                cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
+                cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
+                this.previous.x = this.x;
+                this.previous.z = this.z;
+
+            })
+            .easing(TWEEN.Easing.Circular.In)
+            .start();
     });
 
 
