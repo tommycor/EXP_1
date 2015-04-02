@@ -5,9 +5,9 @@ var scene;
 var camera;
 var spotLight;
 var planeY = -50;
-
-
-var test = false;
+var minV = 10000;
+var maxV = 2500;
+var deltaV = minV - maxV;
 var cube;
 
 
@@ -55,8 +55,8 @@ function init() {
     var locateGeometry = new THREE.PlaneBufferGeometry(80, 180);
     var locateMaterial = new THREE.MeshLambertMaterial({
         color: 0xFF0000,
-        transparent : true
-        //opacity: 0
+        transparent : true,
+        opacity: 0
     });
     var locate = new THREE.Mesh(planeGeometry, locateMaterial);
     locate.name = "locate";
@@ -103,7 +103,7 @@ function init() {
     var maxRotation = { x : Math.PI/2, z: Math.PI/2 };
     var previous = { x : 0, z: 0 };
     var tween = new TWEEN.Tween({x : 0, z: 0, previous : previous})
-        .to({x : Math.PI/10, z: Math.PI/10}, 3000)
+        .to({x : Math.PI/10, z: Math.PI/10}, 10000)
         .onUpdate(function(){
             cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
             cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
@@ -111,19 +111,20 @@ function init() {
             this.previous.z = this.z;
 
         })
-        //.easing(TWEEN.Easing.Elastic.InOut)
+        .easing(TWEEN.Easing.Circular.In)
     
 
-    window.addEventListener('click', function(event){
+    window.addEventListener('mousemove', function(event){
         event.preventDefault();
 
         var vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
-        projector.unprojectVector(vector,camera);
+        vector.unproject(camera);
 
         var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
         var intersect = raycaster.intersectObject( locate );
 
-        console.log(intersect[0].point);
+        console.log("X: "+intersect[0].point.x);
+        console.log("Z: "+intersect[0].point.z);
 
     });
     window.addEventListener('click', function(){
