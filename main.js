@@ -8,6 +8,9 @@ var planeY = -50;
 var minV = 10000;
 var maxV = 2500;
 var deltaV = minV - maxV;
+var maxR = Math.PI/4;
+var minR = Math.PI/10;
+var deltaR = maxR - minR;
 var cube;
 var sizePlane = 180;
 
@@ -73,7 +76,6 @@ function init() {
         color: 'white'
     });
     cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-    cube.position.y = 5;
     cube.castShadow = true;
     cube.transparent = true;
 
@@ -100,11 +102,9 @@ function init() {
 
     render();
 
-    var rotation = { x : 0, z: 0 };
-    var maxRotation = { x : Math.PI/2, z: Math.PI/2 };
     var previous = { x : 0, z: 0 };
     var tween = new TWEEN.Tween({x : 0, z: 0, previous : previous})
-        .to({x : Math.PI/10, z: Math.PI/10}, 10000)
+        .to({x : Math.PI/4, y: Math.PI/4, z: Math.PI/4}, 1000)
         .onUpdate(function(){
             cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
             cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
@@ -124,14 +124,23 @@ function init() {
         var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
         var intersect = raycaster.intersectObject( locate );
 
-        mouseX = intersect[0].point.x;
-        mouseZ = intersect[0].point.z;
+        var mouseX = intersect[0].point.x;
+        var mouseZ = intersect[0].point.z;
+
+        //DistanceAxeX = (Xa - Xb)
+        var distX = cube.position.x - mouseX;
+        var distZ = cube.position.z - mouseZ;
 
         //Distance = racine((Xa - Xb)² + (Ya - Yb)²)
-        var dist = Math.sqrt((cube.position.x - mouseX)*(cube.position.x - mouseX) + (cube.position.z - mouseZ)*(cube.position.z - mouseZ));
-        var timeRotate = deltaV * (4/sizePlane) * dist + maxV;
+        var dist = Math.sqrt(distX*distX + distZ*distZ);
 
-        console.log(timeRotate);
+        var timeRotate = deltaV * (4/sizePlane) * dist + maxV;
+        var rotY = -distX * (deltaR/(sizePlane/2)) + maxR;
+
+        if (distX >= 0) rotY = -distX * (deltaR/(sizePlane/2)) + maxR;
+        else            rotY = -(distX * (deltaR/(sizePlane/2)) + maxR);
+
+        console.log("rotY : "+rotY);
 
 
 
@@ -166,7 +175,7 @@ function render() {
 function addControlStat(controlObject) {
     var gui = new dat.GUI();
     gui.add(controlObject, 'camX', -50, 50);
-    gui.add(controlObject, 'camY', 0, 150);
+    gui.add(controlObject, 'camY', 0, 200);
     gui.add(controlObject, 'camZ', -50, 50);
     gui.add(controlObject, 'spotY', 0, 50);
 
