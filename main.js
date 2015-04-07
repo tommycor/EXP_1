@@ -5,8 +5,8 @@ var scene;
 var camera;
 var spotLight;
 var planeY = -50;
-var minV = 10000;
-var maxV = 2500;
+var minV = 5000;
+var maxV = 1500;
 var deltaV = minV - maxV;
 var maxR = Math.PI/4;
 var minR = Math.PI/10;
@@ -138,17 +138,11 @@ function init() {
 
     });
     window.addEventListener('click', function(){
-        var previous = { x : currentRotation.x, z: currentRotation.z };
-        var tween = new TWEEN.Tween({x : currentRotation.x, z: currentRotation.z, previous : previous})
+        var tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
             .to({x : rotX, z: rotZ}, timeRotate)
             .onUpdate(function(){
-                cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
-                cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
-                currentRotation.x += this.x - this.previous.x;
-                currentRotation.z += this.z - this.previous.z;
-
-                this.previous.x = this.x;
-                this.previous.z = this.z;
+                cube.rotation.x = this.x;
+                cube.rotation.z = this.z;
 
             })
             .easing(TWEEN.Easing.Circular.In)
@@ -156,22 +150,15 @@ function init() {
     });
 
     window.addEventListener("keypress", function(){
-        var previous = { x : currentRotation.x, z: currentRotation.z };
-        var tween = new TWEEN.Tween({x : currentRotation.x, z: currentRotation.z, previous : previous})
+        var tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
             .to({x : 0, z: 0}, 500)
             .onUpdate(function(){
-                cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
-                cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
-                currentRotation.x += this.x - this.previous.x;
-                currentRotation.z += this.z - this.previous.z;
-
-                this.previous.x = this.x;
-                this.previous.z = this.z;
-
+                cube.rotation.x = this.x;
+                cube.rotation.z = this.z;
             })
             .onComplete(function(){
-                console.log(currentRotation.x)
-                console.log(currentRotation.z)
+                console.log(cube.rotation.x)
+                console.log(cube.rotation.z)
             })
             .easing(TWEEN.Easing.Circular.In)
             .start();
