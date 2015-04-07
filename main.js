@@ -16,6 +16,9 @@ var sizePlane = 180;
 var rotX;
 var rotZ;
 var timeRotate;
+var mouseX;
+var mouseZ;
+var currentRotation = {x: 0, z : 0};
 
 
 function init() {
@@ -117,8 +120,8 @@ function init() {
         var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
         var intersect = raycaster.intersectObject( locate );
 
-        var mouseX = intersect[0].point.x;
-        var mouseZ = intersect[0].point.z;
+        mouseX = intersect[0].point.x;
+        mouseZ = intersect[0].point.z;
 
         //DistanceAxeX = (Xa - Xb)
         var distX = cube.position.x - mouseX;
@@ -132,17 +135,18 @@ function init() {
         rotZ = maxR * (distX/dist);
         rotX = -maxR * (distZ/dist);
 
-        console.log(timeRotate);
-
 
     });
     window.addEventListener('click', function(){
-        var previous = { x : 0, z: 0 };
-        var tween = new TWEEN.Tween({x : 0, z: 0, previous : previous})
+        var previous = { x : currentRotation.x, z: currentRotation.z };
+        var tween = new TWEEN.Tween({x : currentRotation.x, z: currentRotation.z, previous : previous})
             .to({x : rotX, z: rotZ}, timeRotate)
             .onUpdate(function(){
                 cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
                 cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
+                currentRotation.x += this.x - this.previous.x;
+                currentRotation.z += this.z - this.previous.z;
+
                 this.previous.x = this.x;
                 this.previous.z = this.z;
 
@@ -150,6 +154,28 @@ function init() {
             .easing(TWEEN.Easing.Circular.In)
             .start();
     });
+
+    window.addEventListener("keypress", function(){
+        var previous = { x : currentRotation.x, z: currentRotation.z };
+        var tween = new TWEEN.Tween({x : currentRotation.x, z: currentRotation.z, previous : previous})
+            .to({x : 0, z: 0}, 500)
+            .onUpdate(function(){
+                cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationX(this.x - this.previous.x));
+                cube.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(this.z - this.previous.z));
+                currentRotation.x += this.x - this.previous.x;
+                currentRotation.z += this.z - this.previous.z;
+
+                this.previous.x = this.x;
+                this.previous.z = this.z;
+
+            })
+            .onComplete(function(){
+                console.log(currentRotation.x)
+                console.log(currentRotation.z)
+            })
+            .easing(TWEEN.Easing.Circular.In)
+            .start();
+    })
 
 
     function posMouse(event){

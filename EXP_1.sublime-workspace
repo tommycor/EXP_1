@@ -231,7 +231,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 3634,
+				"buffer_size": 5365,
 				"line_ending": "Windows"
 			}
 		},
@@ -240,14 +240,6 @@
 			"settings":
 			{
 				"buffer_size": 1331,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-03/03.02-animate-cube.html",
-			"settings":
-			{
-				"buffer_size": 11790,
 				"line_ending": "Windows"
 			}
 		}
@@ -303,7 +295,11 @@
 	},
 	"console":
 	{
-		"height": 463.0
+		"height": 463.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
 	},
 	"distraction_free":
 	{
@@ -314,8 +310,13 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/C/Users/Tommy/Documents/git/EXP_1"
+	],
 	"file_history":
 	[
+		"/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-03/03.02-animate-cube.html",
 		"/C/wamp/www/puzzle Tommy Nicolas.zip",
 		"/C/wamp/www/Presizely/Symfony/app/config/parameters.yml",
 		"/C/wamp/www/CRUD_test/crud-admin-generator/src/app.php",
@@ -442,8 +443,7 @@
 		"/C/wamp/www/Symfony/app/config/routing_dev.yml",
 		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Controller/DefaultController.php",
 		"/C/wamp/www/Symfony/src/OC/PlateformBundle/OCPlateformBundle.php",
-		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Default/index.html.twig",
-		"/C/wamp/bin/apache/apache2.4.9/bin/php.ini"
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Default/index.html.twig"
 	],
 	"find":
 	{
@@ -607,12 +607,13 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
 					"file": "index.html",
+					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 481,
@@ -730,22 +731,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
 					"file": "main.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3634,
+						"buffer_size": 5365,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2782,
-								2782
+								0,
+								0
 							]
 						],
 						"settings":
@@ -853,10 +856,12 @@
 						"translation.y": 1218.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 1331,
@@ -882,128 +887,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-03/03.02-animate-cube.html",
-					"settings":
-					{
-						"buffer_size": 11790,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5377,
-								5382
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"incomplete_sync": null,
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"remote_loading": false,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"php": "C:/wamp/bin/php/php5.3.10/php.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1428.0,
-						"zoom_level": 1.0
-					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1040,10 +924,15 @@
 		]
 	},
 	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
 	"output.sftp":
 	{
 		"height": 100.0
 	},
+	"project": "EXP_1.sublime-project",
 	"replace":
 	{
 		"height": 0.0
@@ -1069,10 +958,25 @@
 		],
 		"width": 380.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 143.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }
