@@ -21,6 +21,7 @@ var mouseZ;
 var tween;
 var locate;
 var timer;
+var mouseState;
 
 
 function init() {
@@ -119,45 +120,18 @@ function init() {
     
 
     window.addEventListener('mousemove', function(event){
-        event.preventDefault();
-
-        var vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
-        vector.unproject(camera);
-
-        var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
-        var intersect = raycaster.intersectObject( locate );
-
-        mouseX = intersect[0].point.x;
-        mouseZ = intersect[0].point.z;
-
-        //DistanceAxeX = (Xa - Xb)
-        var distX = cube.position.x - mouseX;
-        var distZ = cube.position.z - mouseZ;
-
-        //Distance = racine((Xa - Xb)² + (Ya - Yb)²)
-        var dist = Math.sqrt(distX*distX + distZ*distZ);
-
-        timeRotate = deltaV * (4/sizePlane) * dist + maxV;
-
-        rotZ = maxR * (distX/dist);
-        rotX = -maxR * (distZ/dist);
-
-
-        clearTimeout(timer);  
-        timer = setTimeout(toNormal, 3000);
+        if(mouseState)
+        {
+            toNormal();
+            mouseState = false;
+        }
+        clearTimeout(timer);
+        timer = setTimeout(followMouse, 2000, event);
 
     });
     window.addEventListener('click', function(){
 
-        tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
-            .to({x : rotX, z: rotZ}, timeRotate)
-            .onUpdate(function(){
-                cube.rotation.x = this.x;
-                cube.rotation.z = this.z;
-
-            })
-            .easing(TWEEN.Easing.Circular.In)
-            .start();
+        
     });
 
 
@@ -204,18 +178,52 @@ function handleResize() {
 
 
 function toNormal(){
-    console.log("stopped");
+
     if(tween) tween.stop();    
     tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
-        .to({x : 0, z: 0}, 500)
+        .to({x : 0, z: 0}, 300)
         .onUpdate(function(){
             cube.rotation.x = this.x;
             cube.rotation.z = this.z;
         })
-        .easing(TWEEN.Easing.Circular.In)
+        .easing(TWEEN.Easing.Elastic.Out)
         .start();
 }
 
+function followMouse(event){
+    mouseState = true;
+
+    var vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
+    vector.unproject(camera);
+
+    var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
+    var intersect = raycaster.intersectObject( locate );
+
+    mouseX = intersect[0].point.x;
+    mouseZ = intersect[0].point.z;
+
+    //DistanceAxeX = (Xa - Xb)
+    var distX = cube.position.x - mouseX;
+    var distZ = cube.position.z - mouseZ;
+
+    //Distance = racine((Xa - Xb)² + (Ya - Yb)²)
+    var dist = Math.sqrt(distX*distX + distZ*distZ);
+
+    timeRotate = deltaV * (4/sizePlane) * dist + maxV;
+
+    rotZ = maxR * (distX/dist);
+    rotX = -maxR * (distZ/dist);
+
+    tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
+        .to({x : rotX, z: rotZ}, timeRotate)
+        .onUpdate(function(){
+            cube.rotation.x = this.x;
+            cube.rotation.z = this.z;
+
+        })
+        .easing(TWEEN.Easing.Circular.In)
+        .start();
+}
 
 
 
