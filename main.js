@@ -8,9 +8,7 @@ var planeY = -50;
 var minV = 5000;
 var maxV = 1500;
 var deltaV = minV - maxV;
-var maxR = Math.PI/4;
-var minR = Math.PI/10;
-var deltaR = maxR - minR;
+var maxR = Math.PI/3;
 var cube;
 var sizePlane = 180;
 var rotX;
@@ -22,6 +20,8 @@ var tween;
 var locate;
 var timer;
 var mouseState;
+var nbr_lines = 10;
+var nbr_colomns = 10;
 
 
 function init() {
@@ -54,7 +54,7 @@ function init() {
     ambientLight = new THREE.AmbientLight(0x999999);
     ambientLight.name = "ambientLight";
 
-    ////PLANE
+    ////PLANES
     var planeGeometry = new THREE.PlaneBufferGeometry(sizePlane, sizePlane, 15, 15);
     var planeMaterial = new THREE.MeshLambertMaterial({color: 0x333333});
     var plane = new THREE.Mesh(planeGeometry, planeMaterial);
@@ -64,7 +64,6 @@ function init() {
     plane.position.y = planeY;
     plane.position.z = 0;
 
-    ////PLANE
     var locateGeometry = new THREE.PlaneBufferGeometry(sizePlane, sizePlane);
     var locateMaterial = new THREE.MeshLambertMaterial({
         color: 0xFF0000,
@@ -119,20 +118,16 @@ function init() {
     
     
 
-    window.addEventListener('mousemove', function(event){
-        if(mouseState)
-        {
-            toNormal();
-            mouseState = false;
-        }
-        clearTimeout(timer);
-        timer = setTimeout(followMouse, 2000, event);
+window.addEventListener('mousemove', function(event){
+    if(mouseState)
+    {
+        toNormal();
+        mouseState = false;
+    }
+    clearTimeout(timer);
+    timer = setTimeout(followMouse, 1000, event);
 
-    });
-    window.addEventListener('click', function(){
-
-        
-    });
+});
 
 
 function render() {
@@ -213,6 +208,12 @@ function followMouse(event){
 
     rotZ = maxR * (distX/dist);
     rotX = -maxR * (distZ/dist);
+
+    rotZ = dist*((rotZ/4-rotZ)/(sizePlane/4)) + rotZ;
+    rotX = dist*((rotX/4-rotX)/(sizePlane/4)) + rotX;
+    
+    console.log("rotZ : " + rotZ);
+    console.log("rotX : " + rotX);
 
     tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
         .to({x : rotX, z: rotZ}, timeRotate)
