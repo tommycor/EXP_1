@@ -18,7 +18,9 @@ var rotZ;
 var timeRotate;
 var mouseX;
 var mouseZ;
-var currentRotation = {x: 0, z : 0};
+var tween;
+var locate;
+var timer;
 
 
 function init() {
@@ -68,7 +70,7 @@ function init() {
         transparent : true,
         opacity: 0
     });
-    var locate = new THREE.Mesh(planeGeometry, locateMaterial);
+    locate = new THREE.Mesh(planeGeometry, locateMaterial);
     locate.name = "locate";
     locate.rotation.x = -0.5 * Math.PI;
     locate.position.x = 0;
@@ -108,6 +110,11 @@ function init() {
 
     render();
 
+    function posMouse(event){
+
+    }
+}
+
     
     
 
@@ -136,9 +143,13 @@ function init() {
         rotX = -maxR * (distZ/dist);
 
 
+        clearTimeout(timer);  
+        timer = setTimeout(toNormal, 3000);
+
     });
     window.addEventListener('click', function(){
-        var tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
+
+        tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
             .to({x : rotX, z: rotZ}, timeRotate)
             .onUpdate(function(){
                 cube.rotation.x = this.x;
@@ -148,27 +159,6 @@ function init() {
             .easing(TWEEN.Easing.Circular.In)
             .start();
     });
-
-    window.addEventListener("keypress", function(){
-        var tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
-            .to({x : 0, z: 0}, 500)
-            .onUpdate(function(){
-                cube.rotation.x = this.x;
-                cube.rotation.z = this.z;
-            })
-            .onComplete(function(){
-                console.log(cube.rotation.x)
-                console.log(cube.rotation.z)
-            })
-            .easing(TWEEN.Easing.Circular.In)
-            .start();
-    })
-
-
-    function posMouse(event){
-
-    }
-}
 
 
 function render() {
@@ -212,6 +202,19 @@ function handleResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+
+function toNormal(){
+    console.log("stopped");
+    if(tween) tween.stop();    
+    tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
+        .to({x : 0, z: 0}, 500)
+        .onUpdate(function(){
+            cube.rotation.x = this.x;
+            cube.rotation.z = this.z;
+        })
+        .easing(TWEEN.Easing.Circular.In)
+        .start();
+}
 
 
 
