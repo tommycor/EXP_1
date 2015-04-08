@@ -1,27 +1,40 @@
 
-// global variables
+// global three
 var renderer;
 var scene;
 var camera;
 var spotLight;
-var planeY = -50;
+// position plane
+// calcule vitesse rotation
 var minV = 5000;
 var maxV = 1500;
 var deltaV = minV - maxV;
+// rotation
 var maxR = Math.PI/3;
-var cube;
-var sizePlane = 180;
 var rotX;
 var rotZ;
 var timeRotate;
+// global Forms
+var sizePlane = 180;
+var cube;
+var locate;
+//interaction
 var mouseX;
 var mouseZ;
 var tween;
-var locate;
 var timer;
 var mouseState;
+//display
 var nbr_lines = 10;
 var nbr_colomns = 10;
+var margin = 20;
+var planeY = -50;
+var startPosX = -(nbr_lines*margin)/2
+var startPosZ = -(nbr_colomns*margin)/2
+// temp tab
+var cubes = [];
+var tweens = [];
+
 
 
 function init() {
@@ -83,6 +96,13 @@ function init() {
         wireframe: true,
         color: 'white'
     });
+
+    for( i=0 ; i<nbr_lines*nbr_columns; i++)
+    { 
+        cubes[i] = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        cubes[i].castShadow = true;
+        cubes[i].transparent = true;
+    }
     cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
     cube.transparent = true;
