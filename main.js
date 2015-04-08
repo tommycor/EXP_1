@@ -15,8 +15,9 @@ var rotX;
 var rotZ;
 var timeRotate;
 // global Forms
-var sizePlane = 180;
+var sizePlane = 200;
 var cube;
+var cubeSize = 2;
 var locate;
 //interaction
 var mouseX;
@@ -25,10 +26,10 @@ var tween;
 var timer;
 var mouseState;
 //display
-var nbr_lines = 10;
-var nbr_columns = 10;
+var nbr_lines = 15;
+var nbr_columns = 15;
 var nbr_cubes = nbr_lines*nbr_columns;
-var margin = 10;
+var margin = 7;
 var planeY = -50;
 var startPosX = -((nbr_lines*margin)/2 - margin/2)
 var startPosZ = -((nbr_columns*margin)/2-margin/2)
@@ -62,7 +63,9 @@ function init() {
     spotLight.angle = Math.PI;
     spotLight.position.set(0, 200, 0);
     spotLight.shadowCameraNear = 10;
-    spotLight.shadowCameraFar = 1000;
+    spotLight.shadowDarkness = 1;
+    spotLight.shadowMapWidth = 1024;
+    spotLight.shadowMapHeight = 1024;
     spotLight.castShadow = true;
 
     ambientLight = new THREE.AmbientLight(0x999999);
@@ -92,7 +95,7 @@ function init() {
     locate.position.z = 0;
 
     ////CUBES
-    var cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
+    var cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
     var cubeMaterial = new THREE.MeshLambertMaterial({
         wireframe: true,
         color: 'white'
