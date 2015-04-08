@@ -26,11 +26,12 @@ var timer;
 var mouseState;
 //display
 var nbr_lines = 10;
-var nbr_colomns = 10;
-var margin = 20;
+var nbr_columns = 10;
+var nbr_cubes = nbr_lines*nbr_columns;
+var margin = 10;
 var planeY = -50;
-var startPosX = -(nbr_lines*margin)/2
-var startPosZ = -(nbr_colomns*margin)/2
+var startPosX = -((nbr_lines*margin)/2 - margin/2)
+var startPosZ = -((nbr_columns*margin)/2-margin/2)
 // temp tab
 var cubes = [];
 var tweens = [];
@@ -57,11 +58,11 @@ function init() {
 
     ////LIGHTS
     spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.intensity = 1;
+    spotLight.intensity = 2;
     spotLight.angle = Math.PI;
-    spotLight.position.set(0, 30, 0);
+    spotLight.position.set(0, 200, 0);
     spotLight.shadowCameraNear = 10;
-    spotLight.shadowCameraFar = 150;
+    spotLight.shadowCameraFar = 1000;
     spotLight.castShadow = true;
 
     ambientLight = new THREE.AmbientLight(0x999999);
@@ -97,23 +98,25 @@ function init() {
         color: 'white'
     });
 
-    for( i=0 ; i<nbr_lines*nbr_columns; i++)
+    for( i=0 ; i<nbr_cubes; i++)
     { 
         cubes[i] = new THREE.Mesh(cubeGeometry, cubeMaterial);
         cubes[i].castShadow = true;
         cubes[i].transparent = true;
+
+        cubes[i].position.x= ((i % nbr_columns) * margin) + startPosX;
+        cubes[i].position.z= (Math.floor(i/nbr_columns) * margin) + startPosZ;
     }
     cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
     cube.transparent = true;
 
-
     ////EXTRA
     control = new function(){
         this.camX = 0;
-        this.camY = 30;
+        this.camY = 60;
         this.camZ = 0;
-        this.spotY = 30;
+        this.spotY = 400;
     };
     addControlStat(control);
 
@@ -124,6 +127,11 @@ function init() {
     scene.add(spotLight);
     scene.add(ambientLight);
     scene.add(cube);
+
+    for( i=0 ; i<nbr_cubes; i++)
+    {
+        scene.add(cubes[i]);
+    }
 
 
     document.body.appendChild(renderer.domElement);
@@ -171,7 +179,7 @@ function addControlStat(controlObject) {
     gui.add(controlObject, 'camX', -50, 50);
     gui.add(controlObject, 'camY', 0, 200);
     gui.add(controlObject, 'camZ', -50, 50);
-    gui.add(controlObject, 'spotY', 0, 50);
+    gui.add(controlObject, 'spotY', 0, 400);
 
     stats = new Stats();
     stats.setMode(0);
