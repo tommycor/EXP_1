@@ -4,16 +4,10 @@ var renderer;
 var scene;
 var camera;
 var spotLight;
-// position plane
 // calcule vitesse rotation
 var minV = 5000;
 var maxV = 1500;
 var deltaV = minV - maxV;
-// rotation
-var maxR = Math.PI/3;
-var rotX;
-var rotZ;
-var timeRotate;
 // global Forms
 var sizePlane = 200;
 var cube;
@@ -25,14 +19,15 @@ var mouseZ;
 var tween;
 var timer;
 var mouseState;
+var maxR = Math.PI/3;
 //display
-var nbr_lines = 15;
-var nbr_columns = 15;
+var nbr_lines = 20;
+var nbr_columns = 20;
 var nbr_cubes = nbr_lines*nbr_columns;
 var margin = 7;
 var planeY = -50;
-var startPosX = -((nbr_lines*margin)/2 - margin/2)
-var startPosZ = -((nbr_columns*margin)/2-margin/2)
+var startPosX = -((nbr_lines*margin)/2 - margin/2);
+var startPosZ = -((nbr_columns*margin)/2-margin/2);
 // temp tab
 var cubes = [];
 var tweens = [];
@@ -62,10 +57,11 @@ function init() {
     spotLight.intensity = 2;
     spotLight.angle = Math.PI;
     spotLight.position.set(0, 200, 0);
+    spotLight.angle = Math.PI/2;
     spotLight.shadowCameraNear = 10;
     spotLight.shadowDarkness = 1;
-    spotLight.shadowMapWidth = 1024;
-    spotLight.shadowMapHeight = 1024;
+    spotLight.shadowMapWidth = 2048;
+    spotLight.shadowMapHeight = 2048;
     spotLight.castShadow = true;
 
     ambientLight = new THREE.AmbientLight(0x999999);
@@ -102,7 +98,8 @@ function init() {
     });
 
     for( i=0 ; i<nbr_cubes; i++)
-    { 
+    {
+        //creating cubes
         cubes[i] = new THREE.Mesh(cubeGeometry, cubeMaterial);
         cubes[i].castShadow = true;
         cubes[i].transparent = true;
@@ -140,14 +137,7 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
     render();
-
-    function posMouse(event){
-
-    }
 }
-
-    
-    
 
 window.addEventListener('mousemove', function(event){
     if(mouseState)
@@ -204,16 +194,20 @@ function handleResize() {
 
 
 function toNormal(){
+    for( i=0 ; i<nbr_cubes; i++)
+    {
+        if(tweens[i]) tweens[i].stop();
 
-    if(tween) tween.stop();    
-    tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
-        .to({x : 0, z: 0}, 300)
-        .onUpdate(function(){
-            cube.rotation.x = this.x;
-            cube.rotation.z = this.z;
-        })
-        .easing(TWEEN.Easing.Elastic.Out)
-        .start();
+        tweens[i] = new TWEEN.Tween({x : cubes[i].rotation.x, z: cubes[i].rotation.z})
+            .to({x : 0, z: 0}, 300)
+            .onUpdate(function(){
+                cubes[i].rotation.x = this.x;
+                cubes[i].rotation.z = this.z;
+            })
+            .easing(TWEEN.Easing.Elastic.Out)
+            .start();
+    }
+
 }
 
 function followMouse(event){
@@ -228,33 +222,43 @@ function followMouse(event){
     mouseX = intersect[0].point.x;
     mouseZ = intersect[0].point.z;
 
-    //DistanceAxeX = (Xa - Xb)
-    var distX = cube.position.x - mouseX;
-    var distZ = cube.position.z - mouseZ;
+    for( i=0 ; i<nbr_cubes; i++)
+    {
+        if(tweens[i]) tweens[i].stop();
 
-    //Distance = racine((Xa - Xb)² + (Ya - Yb)²)
-    var dist = Math.sqrt(distX*distX + distZ*distZ);
+        //DistanceAxeX = (Xa - Xb)
+        var distX = cubes[i].position.x - mouseX;
+        var distZ = cubes[i].position.z - mouseZ;
 
-    timeRotate = deltaV * (4/sizePlane) * dist + maxV;
+        //Distance = racine((Xa - Xb)² + (Ya - Yb)²)
+        var dist = Math.sqrt(distX*distX + distZ*distZ);
 
-    rotZ = maxR * (distX/dist);
-    rotX = -maxR * (distZ/dist);
+        var timeRotate = deltaV * (4/sizePlane) * dist + maxV;
 
-    rotZ = dist*((rotZ/4-rotZ)/(sizePlane/4)) + rotZ;
-    rotX = dist*((rotX/4-rotX)/(sizePlane/4)) + rotX;
+        var rotZ = maxR * (distX/dist);
+        var rotX = -maxR * (distZ/dist);
+
+                console.log(cubes[i])
+        rotZ = dist*((rotZ/4-rotZ)/(sizePlane/4)) + rotZ;
+        rotX = dist*((rotX/4-rotX)/(sizePlane/4)) + rotX;
+
+        tweens[i] = new TWEEN.Tween({x : cubes[i].rotation.x, z: cubes[i].rotation.z})
+            .to({x : rotX, z: rotZ}, timeRotate)
+            .onUpdate(function(){
+                cubes[i].rotation.x = this.x;
+                cubes[i].rotation.z = this.z;
+            })
+            .easing(TWEEN.Easing.Circular.In)
+            .start();
+    }
+
     
-    console.log("rotZ : " + rotZ);
-    console.log("rotX : " + rotX);
+}
 
-    tween = new TWEEN.Tween({x : cube.rotation.x, z: cube.rotation.z})
-        .to({x : rotX, z: rotZ}, timeRotate)
-        .onUpdate(function(){
-            cube.rotation.x = this.x;
-            cube.rotation.z = this.z;
-
-        })
-        .easing(TWEEN.Easing.Circular.In)
-        .start();
+function updateTween(tween, cube)
+{
+    cube.rotation.x = tween.x;
+    cube.rotation.z = tween.z;
 }
 
 
