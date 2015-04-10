@@ -19,6 +19,7 @@ var timer;
 var mouseState;
 var maxR = Math.PI/3;
 //display
+var spotLightY = 400;
 var nbr_lines = 15;
 var nbr_columns = 15;
 var nbr_cubes = nbr_lines*nbr_columns;
@@ -54,7 +55,7 @@ function init() {
     spotLight = new THREE.SpotLight(0xffffff);
     spotLight.intensity = 2;
     spotLight.angle = Math.PI;
-    spotLight.position.set(0, 200, 0);
+    spotLight.position.set(0, spotLightY, 0);
     spotLight.angle = Math.PI/2;
     spotLight.shadowCameraNear = 10;
     spotLight.shadowDarkness = 1;
@@ -111,9 +112,11 @@ function init() {
         this.camX = 0;
         this.camY = 60;
         this.camZ = 0;
-        this.spotY = 400;
     };
     addControlStat(control);
+
+    setupSound();
+    loadSound("BargainHealers.ogg");
 
 
     ////ADDING
@@ -154,8 +157,14 @@ function render() {
     camera.position.x = control.camX;
     camera.position.y = control.camY;
     camera.position.z = control.camZ;
-    spotLight.position.y = control.spotY;
     camera.lookAt(scene.position);
+
+    var array =  new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(array);
+    var average = getAverageVolume(array);
+
+    spotLight.position.y = spotLightY - (average *2);
+    console.log(spotLight.position.y)
 
     TWEEN.update();
     stats.update();
@@ -239,12 +248,13 @@ function customTweenFollow(rotZ, rotX, currentRotX, currentRotZ, duration, index
                 currentValues.z = this.z;
                 // Puisque tween ne gère pas les tableaux, on va déléguer l'update à updateTween
                 // Les arguments sont les valeurs à affecter, et l'index du cube à modifier
-                updateTween(currentValues, index)
+                updateTween(currentValues, index);
             })
             .easing(TWEEN.Easing.Circular.In)
             .start();
     return tween;
 }
+
 // customTweenFollow s'occupe de créer un tween à chaque fois qu'elle est appelé
 // Il possède des paramètres custom pour le retours à la normal du tween
 function customTweenNormal(currentRotX, currentRotZ, index){
@@ -258,25 +268,105 @@ function customTweenNormal(currentRotX, currentRotZ, index){
                 currentValues.z = this.z;
                 // Puisque tween ne gère pas les tableaux, on va déléguer l'update à updateTween
                 // Les arguments sont les valeurs à affecter, et l'index du cube à modifier
-                updateTween(currentValues, index)
+                updateTween(currentValues, index);
             })
             .easing(TWEEN.Easing.Elastic.Out)
             .start();
     return tween;
 
 }
+
 // Update la rotation vien le onUpdate de Tween
 function updateTween(values, index){
     cubes[index].rotation.x = values.x;
     cubes[index].rotation.z = values.z;
 }
 
+
+var context;
+var sourceNode;
+var analyser;
+
+function setupSound() {
+    if (! window.AudioContext) {
+        if (! window.webkitAudioContext) {
+            alert('no audiocontext found');
+        }
+        window.AudioContext = window.webkitAudioContext;
+    }
+    context = new AudioContext();
+
+    // setup a analyzer
+    analyser = context.createAnalyser();
+    analyser.smoothingTimeConstant = 0.4;
+    analyser.fftSize = 1024;
+
+    // create a buffer source node
+    sourceNode = context.createBufferSource();
+    var splitter = context.createChannelSplitter();
+
+    // connect the source to the analyser and the splitter
+    sourceNode.connect(analyser);
+
+    // connect one of the outputs from the splitter to
+    // the analyser
+    // splitter.connect(analyser,0);
+
+    // and connect to destination
+    sourceNode.connect(context.destination);
+
+    context = new AudioContext();
+}
+
+
+function getAverageVolume(array) {
+    var values = 0;
+    var average;
+
+    var length = array.length;
+
+    // get all the frequency amplitudes
+    for (var i = 0; i < length; i++) {
+        values += array[i];
+    }
+
+    average = values / length;
+    return average;
+}
+
+function playSound(buffer) {
+    sourceNode.buffer = buffer;
+    sourceNode.start(0);
+}
+
+// load the specified sound
+function loadSound(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.responseType = 'arraybuffer';
+
+    // When loaded decode the data
+    request.onload = function() {
+
+        // decode the data
+        context.decodeAudioData(request.response, function(buffer) {
+            // when the audio is decoded play the sound
+            playSound(buffer);
+        }, onError);
+    };
+    request.send();
+}
+
+function onError(e) {
+    console.log(e);
+}
+
+
 function addControlStat(controlObject) {
     var gui = new dat.GUI();
     gui.add(controlObject, 'camX', -50, 50);
     gui.add(controlObject, 'camY', 0, 200);
     gui.add(controlObject, 'camZ', -50, 50);
-    gui.add(controlObject, 'spotY', 0, 400);
 
     stats = new Stats();
     stats.setMode(0);

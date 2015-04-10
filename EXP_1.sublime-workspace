@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"tween",
+				"tweens〔variable〕"
+			],
+			[
 				"rot",
 				"rotZ〔variable〕"
 			],
@@ -227,7 +231,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 6471,
+				"buffer_size": 9810,
 				"line_ending": "Windows"
 			}
 		}
@@ -296,10 +300,10 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/puzzle Tommy Nicolas.zip",
 		"/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-03/03.02-animate-cube.html",
 		"/C/Users/Tommy/Documents/git/EXP_1/index.html",
 		"/C/Users/Tommy/Documents/git/EXP_1/main.js",
-		"/C/wamp/www/puzzle Tommy Nicolas.zip",
 		"/C/wamp/www/Presizely/Symfony/app/config/parameters.yml",
 		"/C/wamp/www/CRUD_test/crud-admin-generator/src/app.php",
 		"/C/wamp/www/CRUD_test/crud-admin-generator/web/index.php",
@@ -442,6 +446,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"console",
+			"1024",
 			"Opération street marketing, la parole vous est donnée : rendez vous chez ZARA le mercredi 7 mars, dès 9h ! Cliquez et découvrez",
 			"Nos",
 			"                              <img class=\"gbl-icon svg center-block\" src=\"img/svg/check.svg\"  width=\"28\" height=\"28\">\n",
@@ -567,8 +573,6 @@
 			"ul",
 			"div",
 			"prout",
-			"<img src=\"img/separationTitleMenu.jpg\" class =\"separationTitleMenu\" alt=\"Separation liste\" height=\"1\" width=\"12\">",
-			"1D2B6E",
 			"<img src=\"img/separationTitleMenu.jpg\" class =\"separationTitleMenu\" alt=\"Separation liste\" height=\"1\" width=\"12\">"
 		],
 		"highlight": true,
@@ -595,15 +599,15 @@
 					"file": "main.js",
 					"settings":
 					{
-						"buffer_size": 6471,
+						"buffer_size": 9810,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								68,
-								68
+								8783,
+								8783
 							]
 						],
 						"settings":
@@ -662,6 +666,7 @@
 							"jshint_options":
 							{
 								"browser": true,
+								"devel": true,
 								"evil": true,
 								"regexdash": true,
 								"sub": true,
@@ -679,7 +684,7 @@
 							],
 							"pyflakes_ignore_import_*": true,
 							"remote_loading": false,
-							"sublimelinter": true,
+							"sublimelinter": "load-save",
 							"sublimelinter_delay": 2,
 							"sublimelinter_disable":
 							[
@@ -708,7 +713,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3205.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
