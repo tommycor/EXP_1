@@ -6,7 +6,7 @@ var camera;
 var spotLight;
 // calcule vitesse rotation
 var minV = 5000;
-var maxV = 1500;
+var maxV = 1000;
 var deltaV = minV - maxV;
 // global Forms
 var sizePlane = 200;
@@ -20,8 +20,8 @@ var mouseState;
 var maxR = Math.PI/3;
 //display
 var spotLightY = 400;
-var nbr_lines = 15;
-var nbr_columns = 15;
+var nbr_lines = 25;
+var nbr_columns = 25;
 var nbr_cubes = nbr_lines*nbr_columns;
 var margin = 7;
 var planeY = -50;
@@ -56,11 +56,11 @@ function init() {
     spotLight.intensity = 2;
     spotLight.angle = Math.PI;
     spotLight.position.set(0, spotLightY, 0);
-    spotLight.angle = Math.PI/2;
+    spotLight.angle = Math.PI;
     spotLight.shadowCameraNear = 10;
     spotLight.shadowDarkness = 1;
-    spotLight.shadowMapWidth = 3000;
-    spotLight.shadowMapHeight = 3000;
+    spotLight.shadowMapWidth = 4096;
+    spotLight.shadowMapHeight = 4096;
     spotLight.castShadow = true;
 
     ambientLight = new THREE.AmbientLight(0x999999);
@@ -92,7 +92,7 @@ function init() {
     ////CUBES
     var cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
     var cubeMaterial = new THREE.MeshLambertMaterial({
-        wireframe: true,
+        // wireframe: true,
         color: 'white'
     });
 
@@ -163,7 +163,7 @@ function render() {
     analyser.getByteFrequencyData(array);
     var average = getAverageVolume(array);
 
-    spotLight.position.y = spotLightY - (average *2);
+    spotLight.position.y = spotLightY - (average * 3);
     console.log(spotLight.position.y)
 
     TWEEN.update();
