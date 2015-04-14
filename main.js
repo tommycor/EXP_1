@@ -5,8 +5,8 @@ var scene;
 var camera;
 var spotLight;
 // calcule vitesse rotation
-var minV = 5000;
-var maxV = 1000;
+var minV = 4000;
+var maxV = 500;
 var deltaV = minV - maxV;
 // global Forms
 var sizePlane = 200;
@@ -18,15 +18,15 @@ var mouseZ;
 var timer;
 var mouseState;
 var maxR = Math.PI/3;
+var step = 2;
+var counter = 0;
 //display
-var spotLightY = 400;
+var spotLightY = 500;
 var nbr_lines = 25;
-var nbr_columns = 25;
-var nbr_cubes = nbr_lines*nbr_columns;
+var nbr_cubes = nbr_lines*nbr_lines;
 var margin = 7;
 var planeY = -50;
-var startPosX = -((nbr_lines*margin)/2 - margin/2);
-var startPosZ = -((nbr_columns*margin)/2-margin/2);
+var startPos = -((nbr_lines*margin)/2 - margin/2);
 // temp tab
 var cubes = [];
 var tweens = [];
@@ -54,7 +54,6 @@ function init() {
     ////LIGHTS
     spotLight = new THREE.SpotLight(0xffffff);
     spotLight.intensity = 2;
-    spotLight.angle = Math.PI;
     spotLight.position.set(0, spotLightY, 0);
     spotLight.angle = Math.PI;
     spotLight.shadowCameraNear = 10;
@@ -78,7 +77,6 @@ function init() {
 
     var locateGeometry = new THREE.PlaneBufferGeometry(sizePlane, sizePlane);
     var locateMaterial = new THREE.MeshLambertMaterial({
-        color: 0x000000,
         transparent : true,
         opacity: 0
     });
@@ -92,7 +90,7 @@ function init() {
     ////CUBES
     var cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
     var cubeMaterial = new THREE.MeshLambertMaterial({
-        // wireframe: true,
+        wireframe: true,
         color: 'white'
     });
 
@@ -103,8 +101,8 @@ function init() {
         cubes[i].castShadow = true;
         cubes[i].transparent = true;
 
-        cubes[i].position.x= ((i % nbr_columns) * margin) + startPosX;
-        cubes[i].position.z= (Math.floor(i/nbr_columns) * margin) + startPosZ;
+        cubes[i].position.x= ((i % nbr_lines) * margin) + startPos;
+        cubes[i].position.z= (Math.floor(i/nbr_lines) * margin) + startPos;
     }
 
     ////EXTRA
@@ -116,7 +114,8 @@ function init() {
     addControlStat(control);
 
     setupSound();
-    loadSound("BargainHealers.ogg");
+    loadSound("Lux.mp3");
+    // loadSound("BargainHealers.ogg");
 
 
     ////ADDING
@@ -133,6 +132,13 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
     render();
+
+    window.addEventListener('keypress', function(event){
+        if(event.keyCode == 32){
+            sourceNode.stop();
+            playing = !playing;
+        }
+    })
 }
 
 window.addEventListener('mousemove', function(event){
@@ -149,7 +155,6 @@ window.addEventListener('mousemove', function(event){
     // followMouse est la fonction permettant de balancé un tween en direction de la souris
     clearTimeout(timer);
     timer = setTimeout(followMouse, 1000, event);
-
 });
 
 //RENDERER de base
@@ -159,12 +164,13 @@ function render() {
     camera.position.z = control.camZ;
     camera.lookAt(scene.position);
 
-    var array =  new Uint8Array(analyser.frequencyBinCount);
-    analyser.getByteFrequencyData(array);
-    var average = getAverageVolume(array);
+    if(counter % step == 0){
+        var array =  new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(array);
+        var average = getAverageVolume(array);
 
-    spotLight.position.y = spotLightY - (average * 3);
-    console.log(spotLight.position.y)
+        spotLight.position.y = spotLightY - (average * 3);
+    }
 
     TWEEN.update();
     stats.update();
