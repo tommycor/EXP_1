@@ -232,18 +232,10 @@
 	"buffers":
 	[
 		{
-			"file": "main.js",
+			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 11804,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-04/04.01-output-sound-volums.html",
-			"settings":
-			{
-				"buffer_size": 8626,
+				"buffer_size": 533,
 				"line_ending": "Windows"
 			}
 		}
@@ -312,10 +304,12 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Tommy/Documents/git/EXP_1/main_bis.js",
+		"/C/Users/Tommy/Documents/git/EXP_1/main.js",
+		"/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-04/04.01-output-sound-volums.html",
 		"/C/wamp/www/puzzle Tommy Nicolas.zip",
 		"/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-03/03.02-animate-cube.html",
 		"/C/Users/Tommy/Documents/git/EXP_1/index.html",
-		"/C/Users/Tommy/Documents/git/EXP_1/main.js",
 		"/C/wamp/www/Presizely/Symfony/app/config/parameters.yml",
 		"/C/wamp/www/CRUD_test/crud-admin-generator/src/app.php",
 		"/C/wamp/www/CRUD_test/crud-admin-generator/web/index.php",
@@ -437,9 +431,7 @@
 		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/add.html.twig",
 		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/menu.html.twig",
 		"/C/wamp/www/Symfony/app/layout.html.twig",
-		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/layout.html.twig",
-		"/C/wamp/www/Symfony/app/config/routing_dev.yml",
-		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Controller/DefaultController.php"
+		"/C/wamp/www/Symfony/src/OC/PlateformBundle/Resources/views/Advert/layout.html.twig"
 	],
 	"find":
 	{
@@ -458,6 +450,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"addEvent",
+			"mouseTrigger",
+			"addEve",
 			"console",
 			"1024",
 			"Opération street marketing, la parole vous est donnée : rendez vous chez ZARA le mercredi 7 mars, dès 9h ! Cliquez et découvrez",
@@ -582,10 +577,7 @@
 			"</ul>",
 			"<ul",
 			"</ul>",
-			"ul",
-			"div",
-			"prout",
-			"<img src=\"img/separationTitleMenu.jpg\" class =\"separationTitleMenu\" alt=\"Separation liste\" height=\"1\" width=\"12\">"
+			"ul"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -608,18 +600,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "main.js",
+					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 11804,
+						"buffer_size": 533,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4415,
-								4415
+								455,
+								455
 							]
 						],
 						"settings":
@@ -720,135 +712,12 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1958.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Users/Tommy/Documents/Cours/eBook/Three JS -Essentials/essential-threejs/chapter-04/04.01-output-sound-volums.html",
-					"settings":
-					{
-						"buffer_size": 8626,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4623,
-								4623
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"incomplete_sync": null,
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"devel": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"remote_loading": false,
-							"sublimelinter": "load-save",
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"php": "C:/wamp/bin/php/php5.3.10/php.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"synced": false,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2312.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -10,7 +10,7 @@ var maxV = 500;
 var deltaV = minV - maxV;
 // global Forms
 var sizePlane = 200;
-var cubeSize = 2;
+var cubeSize = 1.5;
 var locate;
 //interaction
 var mouseX;
@@ -24,7 +24,7 @@ var counter = 0;
 var spotLightY = 500;
 var nbr_lines = 25;
 var nbr_cubes = nbr_lines*nbr_lines;
-var margin = 7;
+var margin = 5;
 var planeY = -50;
 var startPos = -((nbr_lines*margin)/2 - margin/2);
 // temp tab
@@ -153,8 +153,10 @@ window.addEventListener('mousemove', function(event){
     // Permet de détecter si la souric ne bouge pas pendant plus d'une seconde
     // A chaque fois que la souris bouge, un timer est lancé, et l'ancien est nettoyé
     // followMouse est la fonction permettant de balancé un tween en direction de la souris
-    clearTimeout(timer);
-    timer = setTimeout(followMouse, 1000, event);
+    // clearTimeout(timer);
+    // timer = setTimeout(followMouse, 1000, event);
+
+    mouseTrigger(event);
 });
 
 //RENDERER de base
@@ -287,6 +289,57 @@ function updateTween(values, index){
     cubes[index].rotation.x = values.x;
     cubes[index].rotation.z = values.z;
 }
+
+
+
+
+
+
+function mouseTrigger(event){
+    // On détecte la position de la souris
+    var vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1, 0.5 );
+    vector.unproject(camera);
+    // On balance le raycaster en fonction de la souris
+    var raycaster = new THREE.Raycaster(camera.position,vector.sub(camera.position).normalize() );
+    // On regarde les intersections entre le plan locate (invisible et au niveau des cubes) et le raycaster
+    var intersect = raycaster.intersectObject( locate );
+
+    mouseX = intersect[0].point.x;
+    mouseZ = intersect[0].point.z;
+
+    //  on boucle pour balancer le tween à chaque cube
+    for( i=0 ; i<nbr_cubes; i++)
+    {
+        //DistanceAxeX = (Xa - Xb)
+        var distX = cubes[i].position.x - mouseX;
+        var distZ = cubes[i].position.z - mouseZ;
+
+        //Distance = racine((Xa - Xb)² + (Ya - Yb)²)
+        var dist = Math.sqrt(distX*distX + distZ*distZ);
+
+        // Sinus
+        var rotZ = maxR * (distX/dist);
+        // Cosinus
+        var rotX = -maxR * (distZ/dist);
+        // On factorise ça de manière à ce que les plus proche tournent plus que les lointains
+        rotZ = dist*((rotZ/4-rotZ)/(sizePlane/4)) + rotZ;
+        rotX = dist*((rotX/4-rotX)/(sizePlane/4)) + rotX;
+
+        cubes[i].rotation.x = rotX;
+        cubes[i].rotation.z = rotZ;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 var context;
