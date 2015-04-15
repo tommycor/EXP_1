@@ -32,6 +32,10 @@ var cubes = [];
 var tweens = [];
 
 
+var glitchPass;
+var composer
+
+
 
 function init() {
 
@@ -42,6 +46,7 @@ function init() {
     ////RENDERER
     renderer = new THREE.WebGLRenderer();
     renderer.setClearColor(0x000000, 1.0);
+    renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMapEnabled = true;
 
@@ -131,12 +136,25 @@ function init() {
 
     document.body.appendChild(renderer.domElement);
 
+
+
+    // postprocessing
+
+    composer = new THREE.EffectComposer( renderer );
+    composer.addPass( new THREE.RenderPass( scene, camera ) );
+
+    glitchPass = new THREE.GlitchPass();
+    glitchPass.renderToScreen = true;
+    composer.addPass( glitchPass );
+
+
     render();
+
+    updateOptions();
 
     window.addEventListener('keypress', function(event){
         if(event.keyCode == 32){
             sourceNode.stop();
-            playing = !playing;
         }
     })
 }
@@ -157,6 +175,14 @@ window.addEventListener('mousemove', function(event){
     timer = setTimeout(followMouse, 1000, event);
 });
 
+
+
+function updateOptions() {
+    var wildGlitch = document.getElementById('wildGlitch');
+    glitchPass.goWild=wildGlitch.checked;
+    console.log(wildGlitch.checked)
+}
+
 //RENDERER de base
 function render() {
     camera.position.x = control.camX;
@@ -176,7 +202,8 @@ function render() {
     stats.update();
 
     requestAnimationFrame(render);
-    renderer.render(scene, camera);
+    composer.render();
+    // renderer.render(scene, camera);
 }
 
 
