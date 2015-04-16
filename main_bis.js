@@ -10,7 +10,7 @@ var maxV = 500;
 var deltaV = minV - maxV;
 // global Forms
 var sizePlane = 200;
-var cubeSize = 1.5;
+var cubeSize = 2;
 var locate;
 //interaction
 var mouseX;
@@ -24,7 +24,7 @@ var counter = 0;
 var spotLightY = 500;
 var nbr_lines = 25;
 var nbr_cubes = nbr_lines*nbr_lines;
-var margin = 5;
+var margin = 7;
 var planeY = -50;
 var startPos = -((nbr_lines*margin)/2 - margin/2);
 // temp tab
@@ -33,7 +33,6 @@ var tweens = [];
 //glitch
 var glitchPass;
 var composer
-
 
 function init() {
 
@@ -115,8 +114,6 @@ function init() {
     };
     addControlStat(control);
 
-    setupSound();
-    loadSound("Lux.mp3");
     // loadSound("BargainHealers.ogg");
 
 
@@ -149,25 +146,27 @@ function init() {
             sourceNode.stop();
         }
     })
+
+    window.addEventListener('mousemove', function(event){
+        // Test l'état de la souris
+        if(mouseState)
+        {
+            // fonction qui va balancer les tweens qui vont remettre les cubes à leur état de repos
+            toNormal();
+            mouseState = false;
+        }
+
+        // Permet de détecter si la souric ne bouge pas pendant plus d'une seconde
+        // A chaque fois que la souris bouge, un timer est lancé, et l'ancien est nettoyé
+        // followMouse est la fonction permettant de balancé un tween en direction de la souris
+        // clearTimeout(timer);
+        // timer = setTimeout(followMouse, 1000, event);
+
+        mouseTrigger(event);
+    });
+    window.addEventListener('resize', handleResize, false);
+
 }
-
-window.addEventListener('mousemove', function(event){
-    // Test l'état de la souris
-    if(mouseState)
-    {
-        // fonction qui va balancer les tweens qui vont remettre les cubes à leur état de repos
-        toNormal();
-        mouseState = false;
-    }
-
-    // Permet de détecter si la souric ne bouge pas pendant plus d'une seconde
-    // A chaque fois que la souris bouge, un timer est lancé, et l'ancien est nettoyé
-    // followMouse est la fonction permettant de balancé un tween en direction de la souris
-    // clearTimeout(timer);
-    // timer = setTimeout(followMouse, 1000, event);
-
-    mouseTrigger(event);
-});
 
 
 function updateOptions() {
@@ -196,7 +195,6 @@ function render() {
 
     requestAnimationFrame(render);
     composer.render();
-    // renderer.render(scene, camera);
 
     counter ++;
 }
@@ -424,14 +422,17 @@ function loadSound(url) {
     request.open('GET', url, true);
     request.responseType = 'arraybuffer';
 
+    request.onprogress = function(e){
+        downloading(e)
+    }
     // When loaded decode the data
-    request.onload = function() {
-
+    request.onload = function(e) {
         // decode the data
         context.decodeAudioData(request.response, function(buffer) {
             // when the audio is decoded play the sound
-            playSound(buffer);
+            playSound(buffer)
         }, onError);
+        loadingComplete();
     };
     request.send();
 }
@@ -442,10 +443,10 @@ function onError(e) {
 
 
 function addControlStat(controlObject) {
-    var gui = new dat.GUI();
-    gui.add(controlObject, 'camX', -50, 50);
-    gui.add(controlObject, 'camY', 0, 200);
-    gui.add(controlObject, 'camZ', -50, 50);
+    // var gui = new dat.GUI();
+    // gui.add(controlObject, 'camX', -50, 50);
+    // gui.add(controlObject, 'camY', 0, 200);
+    // gui.add(controlObject, 'camZ', -50, 50);
 
     stats = new Stats();
     stats.setMode(0);
@@ -468,5 +469,4 @@ function handleResize() {
 
 
 
-window.onload = init;
-window.addEventListener('resize', handleResize, false);
+// window.onload = init;

@@ -380,7 +380,6 @@ function loadSound(url) {
 
     // When loaded decode the data
     request.onload = function() {
-
         // decode the data
         context.decodeAudioData(request.response, function(buffer) {
             // when the audio is decoded play the sound

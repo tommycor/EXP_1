@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>loader try</title>
+</head>
+<style type="text/css">
+	body{
+		width: 100%;
+		height: 100%;
+	}
+</style>
+<script src="../libs/tween.min.js"></script>
+<body>
+
+<script type="text/javascript">
+	var body = document.body;
+	var current = {color: 30};
+	var grey = {color: 30};
+	var white = {color: 255};
+	var duration = 1000;
+
+	var tweenHead = new TWEEN.Tween(current)
+		.to(white, duration)
+		.onUpdate(function(){
+			var local = Math.floor(this.color)
+			// console.log(local);
+			document.body.style.background = "rgb("+local+","+local+","+local+")";
+		})
+		.easing(TWEEN.Easing.Quartic.In);
+
+	var tweenBack = new TWEEN.Tween(current)
+		.to(grey, duration)
+		.onUpdate(function(){
+			var local = Math.floor(this.color)
+			// console.log(local);
+			document.body.style.background = "rgb("+local+","+local+","+local+")";
+		})
+		.easing(TWEEN.Easing.Quartic.Out);
+
+	tweenHead.chain(tweenBack);
+	tweenBack.chain(tweenHead);
+	tweenHead.start();
+	// tweenHead.start();
+
+	renderLoading();
+
+	function renderLoading(){
+		TWEEN.update();
+	    requestAnimationFrame(renderLoading);
+	}
+
+	function downloading(e){
+		console.log(Math.round((e.position/e.total)*100));
+	}
+
+	function loadingcomplete(){
+		// TWEEN.removeAll();
+	}
+</script>
+</body>
+</html>

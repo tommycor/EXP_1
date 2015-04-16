@@ -15,15 +15,120 @@
     <script src="libs/threeEx/ShaderPass.js"></script>
     <script src="libs/threeEx/GlitchPass.js"></script>
     <style>
+        html {
+          height: 100%;
+          font-family: Impact;
+          color: white;
+        }
         body {
             /* set margin to 0 and overflow to hidden, to go fullscreen */
             margin: 0;
             overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #loader{
+            z-index:15;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #loader p{
+            text-transform: uppercase;
+            margin: 0;
+            text-align: center;
+            font-size: 30pt;
+            opacity: 1;
+            transition: opacity 0.5s;
+            -webkit-transition:: opacity 0.5s;
+            -ms-transition:: opacity 0.5s;
+            -o-transition:: opacity 0.5s;
+            -moz-transition:: opacity 0.5s;
+        }
+        #loader p.inOut{
+            opacity:0;
         }
     </style>
     <script src="main_bis.js"></script>
     <!-- <script src="main.js"></script> -->
 </head>
+
+
 <body>
+    <div id="loader">
+        <p id="progress" class ="inOut">Loading the "ba dum Tss"<br/><span id="pourcent">0 %</span></p>
+    </div>
 </body>
+
+
+<script type="text/javascript">
+    var loader = document.getElementById("loader");
+    var progress = document.getElementById("progress");
+    var pourcent = document.getElementById("pourcent");
+    var current = {color: 0};
+    var grey = {color: 0};
+    var white = {color: 50};
+    var duration = 1000;
+    var myReq;
+
+    window.onload = function(){
+            var height = loader.clientHeight;
+            var innerHeight = progress.clientHeight;
+            var margin = height/2 - innerHeight/2;
+            progress.setAttribute("style", "margin-top:"+ margin + "px");
+
+            progress.className = "";
+
+            var tweenHead = new TWEEN.Tween(current)
+                .to(white, duration)
+                .onUpdate(function(){
+                    var local = Math.floor(this.color)
+                    // console.log(local);
+                    loader.style.background = "rgb("+local+","+local+","+local+")";
+                })
+                .easing(TWEEN.Easing.Cubic.In);
+
+            var tweenBack = new TWEEN.Tween(current)
+                .to(grey, duration)
+                .onUpdate(function(){
+                    var local = Math.floor(this.color)
+                    // console.log(local);
+                    loader.style.background = "rgb("+local+","+local+","+local+")";
+                })
+                .easing(TWEEN.Easing.Cubic.Out);
+
+            tweenHead.chain(tweenBack);
+            tweenBack.chain(tweenHead);
+            tweenHead.start();
+
+            renderLoading();
+
+
+        setupSound();
+        loadSound("Lux.mp3");
+    }
+    
+    function renderLoading(){
+        TWEEN.update();
+        myReq = requestAnimationFrame(renderLoading);
+    }
+
+    function downloading(e){
+        pourcent.innerHTML = Math.round((e.loaded/e.total)*100) + " %";
+    }
+
+    function loadingComplete(){
+        progress.className = "inOut";
+
+        setTimeout(function(){
+            TWEEN.removeAll();
+            loader.remove();
+            window.cancelAnimationFrame(myReq);
+            init();
+        }, 500);
+        
+    }
+</script>
 </html>
