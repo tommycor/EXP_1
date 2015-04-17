@@ -22,7 +22,7 @@ var step = 2;
 var counter = 0;
 //display
 var spotLightY = 500;
-var nbr_lines = 25;
+var nbr_lines = 20;
 var nbr_cubes = nbr_lines*nbr_lines;
 var margin = 7;
 var planeY = -50;
@@ -47,9 +47,9 @@ function init() {
     renderer.shadowMapEnabled = true;
 
     ////CAMERA
-    camera.position.x = 0;
-    camera.position.y = 30;
-    camera.position.z = 0;
+    // camera.position.x = 0;
+    // camera.position.y = 40;
+    // camera.position.z = 0;
     camera.lookAt(scene.position);
 
     ////LIGHTS
@@ -109,8 +109,8 @@ function init() {
     ////EXTRA
     control = new function(){
         this.camX = 0;
-        this.camY = 60;
         this.camZ = 0;
+        this.camY = 50;
     };
     addControlStat(control);
 
@@ -177,9 +177,9 @@ function updateOptions() {
 
 //RENDERER de base
 function render() {
-    camera.position.x = control.camX;
+    scene.position.x = control.camX;
+    scene.position.z = control.camZ;
     camera.position.y = control.camY;
-    camera.position.z = control.camZ;
     camera.lookAt(scene.position);
 
     if(counter % step == 0){
@@ -443,10 +443,10 @@ function onError(e) {
 
 
 function addControlStat(controlObject) {
-    // var gui = new dat.GUI();
-    // gui.add(controlObject, 'camX', -50, 50);
-    // gui.add(controlObject, 'camY', 0, 200);
-    // gui.add(controlObject, 'camZ', -50, 50);
+    var gui = new dat.GUI();
+    gui.add(controlObject, 'camX', -100, 100);
+    gui.add(controlObject, 'camZ', -100, 100);
+    gui.add(controlObject, 'camY', 20, 100);
 
     stats = new Stats();
     stats.setMode(0);
